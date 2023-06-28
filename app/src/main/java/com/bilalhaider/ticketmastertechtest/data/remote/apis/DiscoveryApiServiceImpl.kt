@@ -1,25 +1,20 @@
 package com.bilalhaider.ticketmastertechtest.data.remote.apis
 
-import android.app.Application
-import android.util.Log
-import androidx.room.Room
 import com.bilalhaider.ticketmastertechtest.data.ServiceResult
 import com.bilalhaider.ticketmastertechtest.data.local.db.AppDatabase
-import com.bilalhaider.ticketmastertechtest.data.local.db.dao.LocalDiscoveryEvent
 import com.bilalhaider.ticketmastertechtest.data.remote.models.DiscoverEventsResponse
 import com.bilalhaider.ticketmastertechtest.data.remote.models.DiscoveryEventModel
 import com.bilalhaider.ticketmastertechtest.domain.interfaces.DiscoveryApiService
-import com.bilalhaider.ticketmastertechtest.util.toApiError
 import io.ktor.client.call.body
+import io.ktor.client.engine.android.Android
 import io.ktor.client.request.get
 import java.util.Locale
 import javax.inject.Inject
 
-// Implementation of DiscoverApiService interface and inherits KtorApi abstract class
-
+// Implementation of DiscoverApiService interface and inherits KtorApi open class
 class DiscoveryApiServiceImpl @Inject constructor(
     val eventDatabase: AppDatabase
-): KtorApi(), DiscoveryApiService {
+): KtorApi(Android.create()), DiscoveryApiService {
 
     companion object {
         const val DISCOVER = "$BASE_URL${ApiRoutes.DISCOVERY}"
@@ -42,14 +37,14 @@ class DiscoveryApiServiceImpl @Inject constructor(
             }
 
         } catch (error: Exception) {
-            error.toApiError<DiscoverEventsResponse>()
+            ServiceResult.Error("Search Event Error: ", error.message ?: "Network Error")
         }
 
     private fun addToDatabase(discoveryEventModel: DiscoveryEventModel) {
         try {
             eventDatabase.eventDao().insertEvent(discoveryEventModel)
         } catch (e: Exception) {
-            // TODO: Fix Log.e not being mocked causing error
+            // TODO: Fix Log.e not being mocked error
 //            Log.e("DiscoveryApiServiceImpl", "addToDatabase() -> ${e.message}")
         }
     }

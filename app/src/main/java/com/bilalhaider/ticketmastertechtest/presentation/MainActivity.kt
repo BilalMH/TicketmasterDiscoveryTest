@@ -1,4 +1,4 @@
-package com.bilalhaider.ticketmastertechtest
+package com.bilalhaider.ticketmastertechtest.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

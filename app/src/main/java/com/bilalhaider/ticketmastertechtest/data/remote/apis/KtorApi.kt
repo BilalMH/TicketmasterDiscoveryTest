@@ -2,6 +2,7 @@ package com.bilalhaider.ticketmastertechtest.data.remote.apis
 
 import android.util.Log
 import io.ktor.client.HttpClient
+import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.engine.android.Android
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.logging.LogLevel
@@ -10,7 +11,7 @@ import io.ktor.client.plugins.logging.Logging
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
-abstract class KtorApi {
+open class KtorApi(private val engine: HttpClientEngine) {
 
     companion object {
         const val BASE_URL = "https://app.ticketmaster.com"
@@ -21,7 +22,7 @@ abstract class KtorApi {
 
     fun client(): HttpClient {
         return _httpClient ?: synchronized(this) {
-            val newInstance = HttpClient(Android) {
+            val newInstance = HttpClient(engine) {
                 expectSuccess = true
 
                 install(Logging) {

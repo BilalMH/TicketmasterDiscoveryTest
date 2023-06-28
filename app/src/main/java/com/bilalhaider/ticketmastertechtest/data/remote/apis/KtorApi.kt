@@ -27,7 +27,7 @@ abstract class KtorApi {
                 install(Logging) {
                     logger = object : Logger {
                         override fun log(message: String) {
-                            Log.d("HttpClient", message)
+//                            Log.d("HttpClient", message)
                         }
                     }
 
@@ -51,7 +51,7 @@ abstract class KtorApi {
     }
 
     fun close() {
-        Log.d("HttpClient", "closing the client...")
+//        Log.d("HttpClient", "closing the client...")
         _httpClient?.close()
         _httpClient = null
     }

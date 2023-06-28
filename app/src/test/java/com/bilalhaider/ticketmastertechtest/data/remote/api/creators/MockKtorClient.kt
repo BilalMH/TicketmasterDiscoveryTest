@@ -14,7 +14,6 @@ import kotlinx.serialization.json.Json
 private val responseHeaders = headersOf(HttpHeaders.ContentType, "application/json")
 
 // Mocking a success client for happy paths, with Ktor we can feed MockEngine into our HttpClient to create a MockClient
-// TODO Mock error client
 val ktorSuccessClient = HttpClient(MockEngine) {
     engine {
         addHandler { request ->

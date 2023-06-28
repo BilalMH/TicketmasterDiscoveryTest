@@ -7,7 +7,7 @@ import com.bilalhaider.ticketmastertechtest.data.remote.models.CityModel
 import com.bilalhaider.ticketmastertechtest.data.remote.models.ClassificationModel
 import com.bilalhaider.ticketmastertechtest.data.remote.models.CountryModel
 import com.bilalhaider.ticketmastertechtest.data.remote.models.DateModel
-import com.bilalhaider.ticketmastertechtest.data.remote.models.DiscoverEventModel
+import com.bilalhaider.ticketmastertechtest.data.remote.models.DiscoveryEventModel
 import com.bilalhaider.ticketmastertechtest.data.remote.models.DiscoverEventsResponse
 import com.bilalhaider.ticketmastertechtest.data.remote.models.EmbeddedModel
 import com.bilalhaider.ticketmastertechtest.data.remote.models.EventModel
@@ -153,4 +153,4 @@ val mockEventsResponse = listOf(
     )
 )
 
-val mockDiscoverEventsResponse = DiscoverEventsResponse(DiscoverEventModel(mockEventsResponse))
+val mockDiscoverEventsResponse = DiscoverEventsResponse(DiscoveryEventModel(0, mockEventsResponse))

@@ -61,35 +61,39 @@ android {
 
 dependencies {
 
+    // Androidx appcompat and core dependencies
     implementation("androidx.appcompat:appcompat:${Versions.Androidx.APP_COMPAT}")
+    implementation("androidx.core:core-ktx:${Versions.Androidx.CORE_KTX}")
+
+    // Compose
     implementation("androidx.activity:activity-compose:${Versions.Androidx.ACTIVITY_COMPOSE}")
     implementation("androidx.compose.ui:ui:${Versions.Compose.COMPOSE}")
     implementation("androidx.compose.ui:ui-tooling:${Versions.Compose.COMPOSE}")
     implementation("androidx.compose.foundation:foundation:${Versions.Compose.COMPOSE}")
-    implementation("androidx.compose.material:material:${Versions.Compose.COMPOSE}")
+    implementation("androidx.compose.material3:material3:${Versions.MATERIAL}")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.Compose.VIEWMODEL_COMPOSE}")
-    implementation("androidx.core:core-ktx:${Versions.Androidx.CORE_KTX}")
+    implementation("androidx.paging:paging-compose:${Versions.Compose.PAGING_COMPOSE}")
+    implementation("io.coil-kt:coil-compose:${Versions.COIL}")
+
+    // Lifecycle dependencies
     implementation("androidx.lifecycle:lifecycle-process:${Versions.Androidx.LIFECYCLE}")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:${Versions.Androidx.LIFECYCLE}")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:${Versions.Androidx.LIFECYCLE}")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.Androidx.LIFECYCLE}")
-    implementation("androidx.paging:paging-compose:${Versions.Compose.PAGING_COMPOSE}")
+
+    // Serialization dependencies
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:${Versions.Kotlinx.SERIALIZATION}")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.Kotlinx.SERIALIZATION}")
 
+    // Hilt dependencies
     implementation("com.google.dagger:hilt-android:${Versions.Hilt.HILT}")
     kapt("com.google.dagger:hilt-android-compiler:${Versions.Hilt.HILT}")
     kapt("androidx.hilt:hilt-compiler:${Versions.Hilt.HILT_COMPILER}")
 
-    implementation("com.google.accompanist:accompanist-flowlayout:${Versions.ACCOMPANIST}")
-    implementation("com.google.accompanist:accompanist-insets:${Versions.ACCOMPANIST}")
-
+    // Coroutine dependencies
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.Kotlinx.COROUTINES}")
 
-    implementation("io.coil-kt:coil-compose:${Versions.COIL}")
-
-    implementation("androidx.compose.material3:material3:${Versions.MATERIAL}")
-
+    // Ktor dependencies
     implementation("io.ktor:ktor-client-core:${Versions.KTOR}")
     implementation("io.ktor:ktor-client-android:${Versions.KTOR}")
     implementation("io.ktor:ktor-client-content-negotiation:${Versions.KTOR}")
@@ -97,6 +101,12 @@ dependencies {
     implementation("io.ktor:ktor-client-logging:${Versions.KTOR}")
     implementation("io.ktor:ktor-client-mock:${Versions.KTOR}")
 
+    // Room dependencies
+    implementation("androidx.room:room-runtime:2.5.2")
+    implementation("androidx.room:room-ktx:2.5.2")
+    kapt("androidx.room:room-ktx:2.5.2")
+
+    // Testing dependencies
     testImplementation(kotlin("test-junit"))
     testImplementation("com.google.truth:truth:1.1.3")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")

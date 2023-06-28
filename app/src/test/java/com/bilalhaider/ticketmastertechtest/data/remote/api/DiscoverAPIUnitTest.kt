@@ -1,14 +1,17 @@
 package com.bilalhaider.ticketmastertechtest.data.remote.api
 
 import com.bilalhaider.ticketmastertechtest.data.ServiceResult
+import com.bilalhaider.ticketmastertechtest.data.local.db.AppDatabase
 import com.bilalhaider.ticketmastertechtest.data.remote.api.creators.ktorSuccessClient
 import com.bilalhaider.ticketmastertechtest.data.remote.apis.DiscoveryApiServiceImpl
 import com.google.common.truth.Truth.assertThat
+import io.mockk.MockK
 import io.mockk.every
+import io.mockk.mockk
+import io.mockk.mockkConstructor
 import io.mockk.spyk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
-import org.junit.Before
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.assertInstanceOf
 import org.junit.jupiter.api.Nested
@@ -22,7 +25,8 @@ internal class DiscoverAPIUnitTest {
     * can keep testing closer to my actual business logic.
     * This then eliminates the need to create duplicate services that inherit from the same service
     */
-    private val discoveryApiService = spyk<DiscoveryApiServiceImpl>()
+    private val appDatabaseMock = mockkConstructor(AppDatabase::class)
+    private val discoveryApiService = spyk(DiscoveryApiServiceImpl(eventDatabase = mockk()))
 
     @Nested
     internal inner class ReturnSuccess {
@@ -36,7 +40,7 @@ internal class DiscoverAPIUnitTest {
 
             assertInstanceOf(ServiceResult.Success::class.java, results)
 
-            Assertions.assertEquals(2, (results as ServiceResult.Success).data.discoverEvent.events.size)
+            Assertions.assertEquals(2, (results as ServiceResult.Success).data.discoveryEvent.events.size)
         }
 
         @Test
@@ -45,7 +49,7 @@ internal class DiscoverAPIUnitTest {
 
             val results = discoveryApiService.discoverEventBySearch("Sleep Token")
 
-            val sortedResults = (results as ServiceResult.Success).data.discoverEvent.events.sortedBy { it.dates.start.localDate }
+            val sortedResults = (results as ServiceResult.Success).data.discoveryEvent.events.sortedBy { it.dates.start.localDate }
 
             for(i in 0..sortedResults.size - 2) {
                 assertThat(sortedResults[i].dates.start.localDate).isAtMost(sortedResults[i+1].dates.start.localDate)
@@ -58,7 +62,7 @@ internal class DiscoverAPIUnitTest {
 
             val results = discoveryApiService.discoverEventBySearch("Sleep Token")
 
-            val sortedResults = (results as ServiceResult.Success).data.discoverEvent.events.sortedByDescending { it.dates.start.localDate }
+            val sortedResults = (results as ServiceResult.Success).data.discoveryEvent.events.sortedByDescending { it.dates.start.localDate }
 
             for(i in 0..sortedResults.size - 2) {
                 assertThat(sortedResults[i].dates.start.localDate).isAtLeast(sortedResults[i+1].dates.start.localDate)

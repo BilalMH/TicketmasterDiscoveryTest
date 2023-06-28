@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class DiscoverEventsResponse(
-    @SerialName("_embedded") val discoverEvent: DiscoverEventModel,
+    @SerialName("_embedded") val discoveryEvent: DiscoveryEventModel,
     val errors: List<ResponseErrors> = emptyList()
 )
 

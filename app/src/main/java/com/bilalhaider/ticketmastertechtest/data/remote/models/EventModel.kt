@@ -1,12 +1,16 @@
 package com.bilalhaider.ticketmastertechtest.data.remote.models
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 //Using SerialName annotations "_links" and "_embedded" to allow for better readability in the code instead of following API response
 
 @Serializable
-data class DiscoverEventModel(
+@Entity("discoveryEvents")
+data class DiscoveryEventModel(
+    @PrimaryKey(autoGenerate = true) val id: Int? = null,
     val events: List<EventModel>
 )
 

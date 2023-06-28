@@ -5,7 +5,6 @@ import com.bilalhaider.ticketmastertechtest.data.local.db.AppDatabase
 import com.bilalhaider.ticketmastertechtest.data.remote.api.creators.ktorSuccessClient
 import com.bilalhaider.ticketmastertechtest.data.remote.apis.DiscoveryApiServiceImpl
 import com.google.common.truth.Truth.assertThat
-import io.mockk.MockK
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.mockkConstructor
@@ -25,7 +24,6 @@ internal class DiscoverAPIUnitTest {
     * can keep testing closer to my actual business logic.
     * This then eliminates the need to create duplicate services that inherit from the same service
     */
-    private val appDatabaseMock = mockkConstructor(AppDatabase::class)
     private val discoveryApiService = spyk(DiscoveryApiServiceImpl(eventDatabase = mockk()))
 
     @Nested

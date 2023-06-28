@@ -1,4 +1,4 @@
-package com.bilalhaider.ticketmastertechtest.di.modules
+package com.bilalhaider.ticketmastertechtest.data.di.modules
 
 import android.content.Context
 import androidx.room.Room

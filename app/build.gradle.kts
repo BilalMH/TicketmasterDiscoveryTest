@@ -60,6 +60,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":data"))
+    implementation(project(":domain"))
 
     // Androidx appcompat and core dependencies
     implementation("androidx.appcompat:appcompat:${Versions.Androidx.APP_COMPAT}")
@@ -81,10 +83,6 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:${Versions.Androidx.LIFECYCLE}")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.Androidx.LIFECYCLE}")
 
-    // Serialization dependencies
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:${Versions.Kotlinx.SERIALIZATION}")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.Kotlinx.SERIALIZATION}")
-
     // Hilt dependencies
     implementation("com.google.dagger:hilt-android:${Versions.Hilt.HILT}")
     kapt("com.google.dagger:hilt-android-compiler:${Versions.Hilt.HILT}")
@@ -92,19 +90,6 @@ dependencies {
 
     // Coroutine dependencies
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.Kotlinx.COROUTINES}")
-
-    // Ktor dependencies
-    implementation("io.ktor:ktor-client-core:${Versions.KTOR}")
-    implementation("io.ktor:ktor-client-android:${Versions.KTOR}")
-    implementation("io.ktor:ktor-client-content-negotiation:${Versions.KTOR}")
-    implementation("io.ktor:ktor-serialization-kotlinx-json:${Versions.KTOR}")
-    implementation("io.ktor:ktor-client-logging:${Versions.KTOR}")
-    implementation("io.ktor:ktor-client-mock:${Versions.KTOR}")
-
-    // Room dependencies
-    implementation("androidx.room:room-runtime:2.5.2")
-    implementation("androidx.room:room-ktx:2.5.2")
-    kapt("androidx.room:room-ktx:2.5.2")
 
     // Testing dependencies
     testImplementation(kotlin("test-junit"))

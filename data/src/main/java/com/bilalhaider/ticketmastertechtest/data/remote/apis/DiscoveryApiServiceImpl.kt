@@ -2,9 +2,9 @@ package com.bilalhaider.ticketmastertechtest.data.remote.apis
 
 import com.bilalhaider.ticketmastertechtest.data.ServiceResult
 import com.bilalhaider.ticketmastertechtest.data.local.db.AppDatabase
+import com.bilalhaider.ticketmastertechtest.data.remote.interfaces.DiscoveryApiService
 import com.bilalhaider.ticketmastertechtest.data.remote.models.DiscoverEventsResponse
 import com.bilalhaider.ticketmastertechtest.data.remote.models.DiscoveryEventModel
-import com.bilalhaider.ticketmastertechtest.domain.interfaces.DiscoveryApiService
 import io.ktor.client.call.body
 import io.ktor.client.engine.android.Android
 import io.ktor.client.request.get

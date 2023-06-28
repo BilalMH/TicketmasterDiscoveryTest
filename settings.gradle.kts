@@ -1,3 +1,7 @@
 rootProject.name = "TicketmasterTechTest"
-include(":app")
+include(
+    ":app",
+    ":data",
+    ":domain"
+)
  

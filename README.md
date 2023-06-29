@@ -15,6 +15,7 @@ The code contains the following
     - Hilt for Dependency Injection
     - Coroutines for Multithreading
     - Flows for observables
+    - Kover for code coverage statistics
 
 This project will compile without any necessary extras
 

@@ -7,13 +7,15 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.bilalhaider.ticketmastertechtest.domain.data.remote.models.DiscoveryEventModel
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.StateFlow
 
 @Dao
-interface LocalDiscoveryEvent {
+interface DiscoveryEventDao {
 
     @Query("SELECT * FROM discoveryEvents")
-    fun getEvents() : StateFlow<List<DiscoveryEventModel>>
+    fun getEvents() : Flow<List<DiscoveryEventModel>>
+
+    @Query("SELECT * FROM discoveryEvents where id = :eventId")
+    fun getOneEvent(eventId: Int) : DiscoveryEventModel
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertEvent(events: DiscoveryEventModel)

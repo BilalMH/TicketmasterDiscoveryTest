@@ -2,7 +2,16 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="DiscoveryEventDaoTest">
+        <State />
+      </entry>
       <entry key="app">
+        <State />
+      </entry>
+      <entry key="deleteEvent_returnTrue()">
+        <State />
+      </entry>
+      <entry key="insertEvent_conflictResolution_replace_returnTrue()">
         <State />
       </entry>
     </value>

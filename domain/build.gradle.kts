@@ -2,7 +2,8 @@ plugins {
     id("com.android.library")
     id("dagger.hilt.android.plugin")
     id("kotlin-android")
-    id ("org.jetbrains.kotlinx.kover")
+    id("org.jetbrains.kotlinx.kover")
+    id("com.google.devtools.ksp")
     kotlin("android")
     kotlin("kapt")
     kotlin("plugin.serialization")
@@ -63,9 +64,10 @@ dependencies {
     kapt("androidx.hilt:hilt-compiler:${Versions.Hilt.HILT_COMPILER}")
 
     // Room dependencies
-    api("androidx.room:room-runtime:2.5.2")
-    api("androidx.room:room-ktx:2.5.2")
-    kapt("androidx.room:room-ktx:2.5.2")
+    api("androidx.room:room-runtime:${Versions.Androidx.ROOM}")
+    api("androidx.room:room-ktx:${Versions.Androidx.ROOM}")
+    kapt("androidx.room:room-ktx:${Versions.Androidx.ROOM}")
+    ksp("androidx.room:room-compiler:${Versions.Androidx.ROOM}")
 
     // Ktor dependencies
     implementation("io.ktor:ktor-client-core:${Versions.KTOR}")
@@ -77,11 +79,11 @@ dependencies {
 
     // Testing dependencies
     testImplementation(kotlin("test-junit"))
-    testImplementation("com.google.truth:truth:1.1.3")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
-    testImplementation("io.ktor:ktor-client-mock:2.3.1")
+    testImplementation("com.google.truth:truth:${Versions.GOOGLE_TRUTH}")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.Kotlinx.COROUTINES}")
+    testImplementation("io.ktor:ktor-client-mock:${Versions.KTOR}")
     testImplementation("io.mockk:mockk:${Versions.MOCKK}")
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${Versions.JUNIT_JUNIPER}")
 
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.2")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${Versions.JUNIT_JUNIPER}")
 }

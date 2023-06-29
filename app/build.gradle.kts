@@ -2,7 +2,7 @@ plugins {
     id("com.android.application")
     id("dagger.hilt.android.plugin")
     id("kotlin-android")
-    id ("org.jetbrains.kotlinx.kover")
+    id("org.jetbrains.kotlinx.kover")
     kotlin("android")
     kotlin("kapt")
     kotlin("plugin.serialization")
@@ -57,6 +57,10 @@ android {
             it.useJUnitPlatform()
         }
     }
+
+    packagingOptions {
+        resources.excludes.add("META-INF/*")
+    }
 }
 
 dependencies {
@@ -93,18 +97,16 @@ dependencies {
 
     // Testing dependencies
     testImplementation(kotlin("test-junit"))
-    testImplementation("com.google.truth:truth:1.1.3")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
-    testImplementation("io.ktor:ktor-client-mock:2.3.1")
-    testImplementation("io.mockk:mockk:${Versions.MOCKK}")
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${Versions.JUNIT_JUNIPER}")
 
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${Versions.JUNIT_JUNIPER}")
 
-    androidTestImplementation("androidx.test:runner:1.5.2")
-    androidTestImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
+    androidTestImplementation("com.google.truth:truth:${Versions.GOOGLE_TRUTH}")
+    androidTestImplementation("androidx.test:runner:${Versions.Androidx.Test.TEST_RUNNER}")
+    androidTestImplementation("org.junit.jupiter:junit-jupiter-api:${Versions.JUNIT_JUNIPER}")
     androidTestImplementation("io.mockk:mockk-android:${Versions.MOCKK}")
     androidTestImplementation("io.mockk:mockk-agent:${Versions.MOCKK}")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation("android.arch.core:core-testing:${Versions.Androidx.Test.CORE_TESTING}")
+    androidTestImplementation("androidx.test.espresso:espresso-core:${Versions.Androidx.Test.ESPRESSO}")
+    androidTestImplementation("androidx.test.ext:junit:${Versions.Androidx.Test.JUNIT}")
 }

@@ -1,30 +1,14 @@
 package com.bilalhaider.ticketmastertechtest.domain.data.local.db
 
-import android.content.Context
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.bilalhaider.ticketmastertechtest.domain.data.local.db.dao.LocalDiscoveryEvent
+import androidx.room.TypeConverters
+import com.bilalhaider.ticketmastertechtest.domain.data.local.db.dao.DiscoveryEventDao
 import com.bilalhaider.ticketmastertechtest.domain.data.remote.models.DiscoveryEventModel
 
-@Database(entities = arrayOf(DiscoveryEventModel::class), version = 1)
+@Database(entities = [DiscoveryEventModel::class], version = 1, exportSchema = false)
+@TypeConverters(EventTypeConverters::class)
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun eventDao(): LocalDiscoveryEvent
-}
-
-private lateinit var INSTANCE: AppDatabase
-
-fun getDatabase(context: Context): AppDatabase {
-    synchronized(AppDatabase::class.java) {
-        if (!::INSTANCE.isInitialized) {
-            INSTANCE = Room.databaseBuilder(
-                context,
-                AppDatabase::class.java,
-                "eventsDatabase"
-            ).build()
-        }
-    }
-
-    return INSTANCE
+    abstract fun eventDao(): DiscoveryEventDao
 }

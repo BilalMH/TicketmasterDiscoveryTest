@@ -7,6 +7,14 @@ object Versions {
         const val ACTIVITY_COMPOSE = "1.7.2"
         const val CORE_KTX = "1.10.1"
         const val LIFECYCLE = "2.6.1"
+        const val ROOM = "2.5.2"
+
+        object Test {
+            const val TEST_RUNNER = "1.5.2"
+            const val CORE_TESTING = "1.1.1"
+            const val ESPRESSO = "3.5.1"
+            const val JUNIT = "1.1.5"
+        }
     }
 
     object Compose {
@@ -26,9 +34,10 @@ object Versions {
         const val HILT_COMPILER = "1.0.0"
     }
 
-    const val ACCOMPANIST = "0.24.4-alpha"
     const val COIL = "1.4.0"
     const val KTOR = "2.3.1"
     const val MATERIAL = "1.1.1"
     const val MOCKK = "1.13.5"
+    const val GOOGLE_TRUTH = "1.1.3"
+    const val JUNIT_JUNIPER = "5.8.2"
 }

@@ -60,7 +60,6 @@ android {
 }
 
 dependencies {
-    implementation(project(":data"))
     implementation(project(":domain"))
 
     // Androidx appcompat and core dependencies
@@ -72,6 +71,7 @@ dependencies {
     implementation("androidx.compose.ui:ui:${Versions.Compose.COMPOSE}")
     implementation("androidx.compose.ui:ui-tooling:${Versions.Compose.COMPOSE}")
     implementation("androidx.compose.foundation:foundation:${Versions.Compose.COMPOSE}")
+    implementation("androidx.compose.material:material:${Versions.Compose.COMPOSE}")
     implementation("androidx.compose.material3:material3:${Versions.MATERIAL}")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.Compose.VIEWMODEL_COMPOSE}")
     implementation("androidx.paging:paging-compose:${Versions.Compose.PAGING_COMPOSE}")

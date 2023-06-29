@@ -5,8 +5,8 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class LinkModel(
     val self: GenericLinkItem,
-    val attractions: List<GenericLinkItem>,
-    val venues: List<GenericLinkItem>
+    val attractions: List<GenericLinkItem>? = emptyList(),
+    val venues: List<GenericLinkItem>? = emptyList()
 )
 
 @Serializable

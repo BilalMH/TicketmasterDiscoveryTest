@@ -4,7 +4,7 @@ object Versions {
 
     object Androidx {
         const val APP_COMPAT = "1.6.1"
-        const val ACTIVITY_COMPOSE = "1.7.2"
+        const val ACTIVITY_COMPOSE = "1.7.1"
         const val CORE_KTX = "1.10.1"
         const val LIFECYCLE = "2.6.1"
         const val ROOM = "2.5.2"
@@ -18,10 +18,9 @@ object Versions {
     }
 
     object Compose {
-        const val COMPOSE = "1.4.3"
-        const val PAGING_COMPOSE = "1.0.0-alpha20"
+        const val COMPOSE = "1.4.2"
+        const val COMPOSE_COMPILER = "1.4.3"
         const val VIEWMODEL_COMPOSE = "2.6.1"
-        const val MATERIAL = "1.1.0"
     }
 
     object Kotlinx {
@@ -36,7 +35,7 @@ object Versions {
 
     const val COIL = "1.4.0"
     const val KTOR = "2.3.1"
-    const val MATERIAL = "1.1.1"
+    const val MATERIAL3 = "1.1.1"
     const val MOCKK = "1.13.5"
     const val GOOGLE_TRUTH = "1.1.3"
     const val JUNIT_JUNIPER = "5.8.2"

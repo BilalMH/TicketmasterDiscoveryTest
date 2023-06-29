@@ -9,7 +9,7 @@ buildscript {
     dependencies {
         classpath("com.android.tools.build:gradle:7.4.2")
         classpath("com.codingfeline.buildkonfig:buildkonfig-gradle-plugin:0.11.0")
-        classpath("com.google.gms:google-services:4.3.15")
+        classpath("com.google.gms:google-services:4.3.10")
         classpath("com.google.dagger:hilt-android-gradle-plugin:${Versions.Hilt.HILT}")
         classpath(kotlin("gradle-plugin", "1.6.10"))
         classpath(kotlin("serialization", "1.6.10"))

@@ -20,18 +20,12 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
     }
 
     buildTypes {
-        release {
+        getByName("release") {
             isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
 
@@ -49,7 +43,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+        kotlinCompilerExtensionVersion = Versions.Compose.COMPOSE_COMPILER
     }
 
     testOptions {
@@ -76,9 +70,8 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling:${Versions.Compose.COMPOSE}")
     implementation("androidx.compose.foundation:foundation:${Versions.Compose.COMPOSE}")
     implementation("androidx.compose.material:material:${Versions.Compose.COMPOSE}")
-    implementation("androidx.compose.material3:material3:${Versions.MATERIAL}")
+    implementation("androidx.compose.material3:material3:${Versions.MATERIAL3}")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.Compose.VIEWMODEL_COMPOSE}")
-    implementation("androidx.paging:paging-compose:${Versions.Compose.PAGING_COMPOSE}")
     implementation("io.coil-kt:coil-compose:${Versions.COIL}")
 
     // Lifecycle dependencies

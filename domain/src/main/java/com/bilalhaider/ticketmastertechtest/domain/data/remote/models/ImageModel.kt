@@ -4,9 +4,9 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class ImageModel(
-    val ratio: String,
-    val url: String,
-    val width: Long,
-    val height: Long,
-    val fallback: Boolean
+    val ratio: String? = null,
+    val url: String? = null,
+    val width: Long? = null,
+    val height: Long? = null,
+    val fallback: Boolean? = null
 )

@@ -125,3 +125,24 @@ val sampleEvent =
         links = sampleLinkModel,
         venuesAndAttractions = sampleEmbeddedModel
     )
+
+val sampleEvent2 =
+    EventModel(
+        name = "Busted",
+        type = "event",
+        id = "G5djZ9lBR3tT2",
+        test = false,
+        url = "https://www.ticketmaster.co.uk/sleep-token-london-16-12-2023/event/37005EBEAF4A9FCF",
+        locale = "en-us",
+        images = listOf(sampleImageModel),
+        sales = sampleSalesModel,
+        dates = sampleDateModel,
+        classifications = listOf(sampleClassificationModel),
+        info = "Please be advised that Wembley Arena seating is divided into bays",
+        pleaseNote = "Age Restrictions: Standing: 14 and over only",
+        priceRanges = listOf(samplePriceRangeModel),
+        ticketLimit = sampleTicketLimitModel,
+        ageRestrictions = sampleAgeRestrictionModel,
+        links = sampleLinkModel,
+        venuesAndAttractions = sampleEmbeddedModel
+    )

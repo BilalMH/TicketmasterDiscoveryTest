@@ -6,12 +6,17 @@ import com.bilalhaider.ticketmastertechtest.domain.data.remote.apis.DiscoveryApi
 import com.bilalhaider.ticketmastertechtest.domain.data.remote.models.DiscoverEventsResponse
 import com.bilalhaider.ticketmastertechtest.domain.data.remote.models.DiscoveryEventModel
 import com.bilalhaider.ticketmastertechtest.domain.repository.interfaces.DiscoverEventsRepository
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
 
 class DiscoverEventsRepositoryImpl @Inject constructor(
-    private val eventsDatabase: AppDatabase,
     private val discoveryApiService: DiscoveryApiServiceImpl
 ) : DiscoverEventsRepository {
+
+    private val _eventData = MutableStateFlow<DiscoveryEventModel?>(null)
+    override val eventData: StateFlow<DiscoveryEventModel?> = _eventData.asStateFlow()
 
     override fun close() {
         discoveryApiService.close()
@@ -20,17 +25,8 @@ class DiscoverEventsRepositoryImpl @Inject constructor(
     override suspend fun searchEvents(eventName: String) {
         discoveryApiService.discoverEventBySearch(eventName).run {
             if (this is ServiceResult.Success<DiscoverEventsResponse>) {
-                addToDatabase(data.discoveryEvent)
+                _eventData.value = data.discoveryEvent
             }
-        }
-    }
-
-    private fun addToDatabase(discoveryEventModel: DiscoveryEventModel) {
-        try {
-            eventsDatabase.eventDao().insertEvent(discoveryEventModel)
-        } catch (e: Exception) {
-            // TODO: Fix Log.e not being mocked error
-//            Log.e("DiscoveryApiServiceImpl", "addToDatabase() -> ${e.message}")
         }
     }
 }
